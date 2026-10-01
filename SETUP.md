@@ -11,11 +11,15 @@
   - add `http://localhost/callback/`
 - navigate to the following url:
 
+<details>
+
+<summary>⚠️ localhost is no longer allowed !</summary>
+
 ```
 https://accounts.spotify.com/authorize?client_id={SPOTIFY_CLIENT_ID}&response_type=code&scope=user-read-currently-playing,user-read-recently-played&redirect_uri=http://localhost/callback/
 ```
 
-> ⚠️ localhost is no longer allowed !
+</details>
 
 ```
 https://accounts.spotify.com/authorize?client_id={SPOTIFY_CLIENT_ID}&response_type=code&scope=user-read-currently-playing,user-read-recently-played&redirect_uri=http://127.0.0.1:80/callback/
@@ -25,8 +29,18 @@ https://accounts.spotify.com/authorize?client_id={SPOTIFY_CLIENT_ID}&response_ty
 - create a string combining `{SPOTIFY_CLIENT_ID}:{SPOTIFY_CLIENT_SECRET}` (e.g. `5n7o4v5a3t7o5r2e3m1:5a8n7d3r4e2w5n8o2v3a7c5`) and **encode** into [base64](https://base64.io)
 - then run a [curl command](https://httpie.org/run) in the form of:
 
+<details>
+
+<summary>⚠️ localhost is no longer allowed !</summary>
+
 ```sh
 curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -H "Authorization: Basic {BASE64}" -d "grant_type=authorization_code&redirect_uri=http://localhost/callback/&code={CODE}" https://accounts.spotify.com/api/token
+```
+
+</details>
+
+```sh
+curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -H "Authorization: Basic {BASE64}" -d "grant_type=authorization_code&redirect_uri=http://127.0.0.1:80/callback/&code={CODE}" https://accounts.spotify.com/api/token
 ```
 
 - save the Refresh token
